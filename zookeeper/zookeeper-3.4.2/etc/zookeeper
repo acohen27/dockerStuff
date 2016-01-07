@@ -1,0 +1,78 @@
+#!/bin/bash
+#chkconfig: 35 80 10
+#description: ZooKeeper Distributed Sync Service
+### BEGIN INIT INFO
+# Provides:    		zookeeper
+# Required-Start:	zookeeper
+# Should-Start:     
+# Required-Stop:    
+# Should-Stop:      
+# Default-Start:    2 3 5
+# Default-Stop:     0 6
+# Short-Description:    ZooKeeper Service
+# Description:          ZooKeeper Distributed Sync Service
+### END INIT INFO
+
+ZOOKEEPER_HOME=/opt/zookeeper
+prog=zookeeper
+
+if [ -f /etc/init.d/functions ] ; then
+  . /etc/init.d/functions
+elif [ -f /etc/rc.d/init.d/functions ] ; then
+  . /etc/rc.d/init.d/functions
+fi
+
+start() {
+    echo -n $"Starting $prog: "
+    cd $ZOOKEEPER_HOME
+    su - smadmin -c "$ZOOKEEPER_HOME/bin/zkServer.sh start" </dev/null
+    RETVAL=$? 
+    if [ $RETVAL -eq 0 ] ; then
+       echo " OK "
+    else
+       echo " FAILED "
+    fi
+    echo
+    [ $RETVAL -eq 0 ] && touch /var/lock/subsys/$prog;
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    cd $ZOOKEEPER_HOME
+    su - smadmin -c "$ZOOKEEPER_HOME/bin/zkServer.sh" stop </dev/null
+    RETVAL=$?
+    if [ $RETVAL -eq 0 ]; then
+      rm -f /var/lock/subsys/$prog
+      echo " OK "
+    else
+      echo " FAILED "
+    fi
+    echo
+    return $RETVAL
+}
+
+RETVAL=0;
+case "$1" in
+	start)
+ 	    start;
+	    exit 0
+	    ;;
+	stop)
+	    stop;
+	    ;;
+	restart)
+	    $0 stop
+	    $0 start
+	    ;;
+	status)
+	    status $prog
+	    RETVAL=$?
+	    ;;
+	*)
+	    echo $"Usage: $0 {start|stop|restart|status}"
+	    RETVAL=1
+    esac
+    
+    exit $RETVAL
+
