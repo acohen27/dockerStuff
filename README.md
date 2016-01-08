@@ -33,9 +33,9 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 
 5. docker-compose -f <pick a docker-compose.yml you want to work with> up -d
 
-*FYI: You will want to stick with the same docker-compose.yml for the rest of the process. Otherwise, you'll end up recreating a container that uses a different program or version constantly.*
+  *FYI: You will want to stick with the same docker-compose.yml for the rest of the process. Otherwise, you'll end up recreating a container that uses a different program or version constantly.*
 
-*FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf).*
+  *FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf).*
 
 6. docker-compose -f <docker-compose-####.yml> ps 
 
