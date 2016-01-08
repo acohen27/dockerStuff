@@ -1,4 +1,4 @@
-FROM relateiq/oracle-java8
+FROM isuper/java-oracle
 
 # Initial Prep
 RUN	apt-get update && apt-get install -y \

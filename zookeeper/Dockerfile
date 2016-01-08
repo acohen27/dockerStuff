@@ -1,5 +1,5 @@
 # Pull base image.
-FROM relateiq/oracle-java8
+FROM isuper/java-oracle
 
 # Open to other Dockers containers only via linking
 EXPOSE 2181:2181
