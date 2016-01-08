@@ -1,16 +1,19 @@
+
 Prequistes (Instructions to come soon)
  - install ant, java, eclipse, and git
- - Set up your $KARAF_HOME
- - git clone agility folder
- - cp ./bin/karaf to $AGILITY_HOME/karaf/bin/karaf
- - cp ./bin/jvm-opts to $AGILITY_HOME/karaf/bin/jvm-opts
- - git clone https://github.com/acohen27/dockerStuff
+ - git clone agility folder (if you haven't already done so)
+ - Set up your $KARAF_HOME to <git cloned agility folder>/karaf
+ - git clone https://github.com/acohen27/dockerStuff onto anywhere else outside the agility folder
+ - cd into the dockerstuff folder and cp ./bin/karaf to $KARAF_HOME/bin/karaf
+ - cd into the dockerstuff folder and cp ./bin/jvm-opts to $KARAF_HOME/bin/jvm-opts
+(prequistes need to be polished)
 
+-------------------
 1. Download https://docs.docker.com/
 2. open up your bash profile (vi ~/.bash_profile) and add this:
-# You will need to run this command every time you open a terminal and want to access the docker containers. 
-
 alias dockeron='docker-machine start default; eval "$(docker-machine env default)"'
+
+# FYI : You will need to run this command every time you open a terminal and want to access the docker containers. 
 
 # FYI : (docker-machine start) boots up the docker-machine. (You need to do this every time you reboot your laptop)
 
@@ -20,7 +23,7 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 	export DOCKER_CERT_PATH="/Users/acohen27/.docker/machine/machines/default"
 	export DOCKER_MACHINE_NAME="default"
 
-3. cd <andrew docker folder>
+3. cd <dockerStuff folder>
 
 4. docker-compose -f <pick a docker-compose.yml you wish to run> up -d
 
@@ -55,7 +58,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 # Important Tip: You need to be connected to the network internally via work or VPN. 
 # FYI: This will set up the databases in your new mysql docker container
 
-9. cd <andrew docker folder>
+9. cd <dockerStuff folder>
 
 10. docker-compose -f <docker-compose####.yml> restart agilitykaraf
 
@@ -89,7 +92,7 @@ Routine Work Procedure:
 1. git pull whatever
 2. $KARAF_HOME/.. and ant clean deploy
 # FYI: It will compile everything and put all the jars into $KARAF_HOME/deploy
-3. cd <andrew_docker_images> && docker-compose restart agilitykaraf
+3. cd <path to dockerStuff> && docker-compose restart agilitykaraf
 FYI: It will restart agility (karaf)
 4. Play away with agility, eclipse, or whatever
 
@@ -99,4 +102,3 @@ Tricks and Tips:
 ln -s docker-compose-oraclejava8.yml docker-compose.yml. 
 Ahh, "docker-compose ps" => so much better :)
 
-2. 
