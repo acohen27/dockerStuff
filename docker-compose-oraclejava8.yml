@@ -1,0 +1,54 @@
+agilitymysql: #service (image) name
+  # comment container_name line if you want to scale
+  container_name: mysql
+  build: ./mysql
+  environment:
+    MYSQL_USER: admin
+    MYSQL_PASSWORD: x0cloud
+  ports:
+    - 3306:3306
+agilityphpmyadmin:
+  image: corbinu/docker-phpmyadmin
+  container_name: agility_phpmyadmin
+  links:
+    - agilitymysql:mysql #<service:alias>
+  ports: # "publish" ports. Either specify both ports (HOST:CONTAINER) or just the CONTAINER
+    - 8181:80 #we can access their #80 from our $8181........
+  environment:
+    MYSQL_USER: admin
+    MYSQL_PASSWORD: x0cloud
+agilityrabbitmq:
+  container_name: rabbitmq
+  build: ./rabbitmq
+  ports:
+    - 5672:5672
+agilityzookeeper:
+  container_name: zookeeper
+  build: ./zookeeper
+  dockerfile: Dockerfile
+  ports:
+    - 2181:2181
+agilitykaraf:
+  container_name: karaf
+  build: ./karaf
+  dockerfile: Dockerfile
+  #environment:
+  #  DOCKER_IP: $DOCKER_HOST
+  #  MYSQLOPTS: "-h mysql -uadmin -px0cloud"
+  links:
+    - agilitymysql:mysql
+    - agilityrabbitmq:rabbitmq
+    - agilityzookeeper:zookeeper
+  ports:
+    - 5005:5005
+    - 8022:8022
+    - 8080:8080
+    - 8443:8443
+  volumes:
+    - $KARAF_HOME:/opt/agility-platform
+    - $KARAF_HOME/../ddl:/opt/agility-platform/ddl
+
+# Notes
+# publish => accessible from anymore
+# expose => btw dockers only
+# restart: always

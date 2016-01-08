@@ -1,4 +1,4 @@
-FROM relateiq/oracle-java8
+FROM java:8
 
 # Initial Prep
 RUN	apt-get update && apt-get install -y \
@@ -39,7 +39,7 @@ WORKDIR /opt/agility-platform
 USER smadmin
 
 # Setup Environment
-# ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV JAVA_OPTS "-Xms512m -Xmx4G -XX:MaxPermSize=512m -noverify"
 # ENV AGILITY_HOME "/opt/agility-platform"
 

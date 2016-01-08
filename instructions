@@ -22,11 +22,11 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 
 3. cd <andrew docker folder>
 
-4. docker-compose up -d
+4. docker-compose -f <pick a docker-compose.yml you wish to run> up -d
 
 # FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf). 
 
-5. docker-compose ps 
+5. docker-compose -f <docker-compose-####.yml> ps 
 
 # FYI: you should see something like this:
 
@@ -44,7 +44,7 @@ rabbitmq                    /docker-entrypoint.sh       Up                      
                                                                                     0.0.0.0:5672->5672/tcp    
 zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                          0.0.0.0:2181->2181/tcp
 
-6. docker-compose stop agilitykaraf
+6. docker-compose -f <docker-compose####.yml> stop agilitykaraf
 
 # FYI: Techincally karaf will work. You can watch it via "docker-compose logs agilitykaraf", but our other services aren't initialized yet. 
 
@@ -57,7 +57,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
 9. cd <andrew docker folder>
 
-10. docker-compose restart agilitykaraf
+10. docker-compose -f <docker-compose####.yml> restart agilitykaraf
 
 11. Feel free to watch it with "docker-compose logs agilitykaraf" until it completes loading
 
@@ -95,4 +95,8 @@ FYI: It will restart agility (karaf)
 
 Tricks and Tips:
 
-1. 
+1. I am sick of specifying which file (-f) in docker-compose.yml. So I created a symlink. 
+ln -s docker-compose-oraclejava8.yml docker-compose.yml. 
+Ahh, "docker-compose ps" => so much better :)
+
+2. 

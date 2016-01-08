@@ -1,5 +1,5 @@
 # Pull base image.
-FROM relateiq/oracle-java8
+FROM java:8
 
 # Open to other Dockers containers only via linking
 EXPOSE 2181:2181
@@ -17,8 +17,8 @@ RUN mkdir -p /data/zookeeper && chown zookeeper:zookeeper /data/zookeeper
 # Already there
 #COPY zoo.cfg /opt/zookeeper-3.4.2/conf/
 
-# Define commonly used JAVA_HOME variable. (Already exists in there)
-# ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+# Define commonly used JAVA_HOME variable
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 USER zookeeper
 
