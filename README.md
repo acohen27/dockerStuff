@@ -14,11 +14,12 @@
 2. open up your bash profile (vi ~/.bash_profile) and add this:
 alias dockeron='docker-machine start default; eval "$(docker-machine env default)"'
 
-  * FYI : You will need to run this command every time you open a terminal and want to access the docker containers.
+  *FYI : You will need to run this command every time you open a terminal and want to access the docker containers.*
 
-  * FYI : (docker-machine start) boots up the docker-machine. (You need to do this every time you reboot your laptop)
+  *FYI : (docker-machine start) boots up the docker-machine. (You need to do this every time you reboot your laptop)*
 
-  * FYI : (docker-machine env default) exports these variables for you
+  *FYI : (docker-machine env default) exports these variables for you*
+
   ```
 	export DOCKER_TLS_VERIFY="1"
 	export DOCKER_HOST="tcp://192.168.99.100:2376"
@@ -27,7 +28,7 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
   ```
 
 3. dockeron
-*to initialize docker*
+  *to initialize docker*
 
 4. cd <dockerStuff folder>
 
@@ -39,8 +40,8 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 
 6. docker-compose -f <docker-compose-####.yml> ps 
 
-*FYI: you should see something like this:*
-```
+  *FYI: you should see something like this:*
+  ```
           Name                       Command                      State                       Ports           
 -------------------------------------------------------------------------------------------------------------
 agility_phpmyadmin          /bin/sh -c phpmyadmin-      Up                          0.0.0.0:8181->80/tcp      
@@ -54,19 +55,19 @@ rabbitmq                    /docker-entrypoint.sh       Up                      
                             rabb ...                                                5671/tcp,                 
                                                                                     0.0.0.0:5672->5672/tcp    
 zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                          0.0.0.0:2181->2181/tcp
-```
+  ```
 
 7. docker-compose -f <docker-compose####.yml> stop agilitykaraf
 
-*FYI: Techincally karaf will work. You can watch it via "docker-compose logs agilitykaraf", but our other services aren't initialized yet.*
+  *FYI: Techincally karaf will work. You can watch it via "docker-compose logs agilitykaraf", but our other services aren't initialized yet.*
 
 8. cd $KARAF_HOME/../
 
 9. ant reset_demo_dev
 
-*Important Tip: You need to be connected to the network internally via work or VPN.*
+  *Important Tip: You need to be connected to the network internally via work or VPN.*
 
-*FYI: This will set up the databases in your new mysql docker container*
+  *FYI: This will set up the databases in your new mysql docker container*
 
 10. cd <dockerStuff folder>
 
@@ -80,24 +81,24 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 <docker-machien ip default> docker
 
 15. Test the connectivity to your services
-```
+  ```
   open up your favorite browser and run this http://docker:8080 (or http://<docker-machine ip default>:8080)
   or
   curl -L -k http://docker:8080
-```
-```
+  ```
+  ```
   - ssh karaf@docker -p 8022
   Password: karaf
   enter "logout" to exit
-```
-```
+  ```
+  ```
   - open up your favorite browser and run this http://docker:8181 to see your databases.
   Username: admin Password: x0cloud
-```
+  ```
 
 16. Test the debugger in your Eclipse. Few reminders:
-- Update the host's value to "docker" (or <docker-machine ip default>)
-- "JUNIT_NAMESPACE=qa" need to be set in your ~/.bash_profile
+  - Update the host's value to "docker" (or <docker-machine ip default>)
+  - "JUNIT_NAMESPACE=qa" need to be set in your ~/.bash_profile
 
 You should be set to go!
 
