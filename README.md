@@ -14,11 +14,11 @@
 2. open up your bash profile (vi ~/.bash_profile) and add this:
 alias dockeron='docker-machine start default; eval "$(docker-machine env default)"'
 
-*FYI : You will need to run this command every time you open a terminal and want to access the docker containers.
+* FYI : You will need to run this command every time you open a terminal and want to access the docker containers.
 
-*FYI : (docker-machine start) boots up the docker-machine. (You need to do this every time you reboot your laptop)
+* FYI : (docker-machine start) boots up the docker-machine. (You need to do this every time you reboot your laptop)
 
-*FYI : (docker-machine env default) exports these variables for you
+* FYI : (docker-machine env default) exports these variables for you
 ```
 	export DOCKER_TLS_VERIFY="1"
 	export DOCKER_HOST="tcp://192.168.99.100:2376"
