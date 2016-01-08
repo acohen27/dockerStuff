@@ -1,7 +1,7 @@
 # Prequistes (Instructions to come soon)
  - install ant, java, eclipse, and git
  - git clone agility folder (if you haven't already done so)
- - Set up your $KARAF_HOME to <git cloned agility folder>/karaf
+ - Set up your $KARAF_HOME to **git cloned agility folder**/karaf
  - git clone https://github.com/acohen27/dockerStuff onto anywhere else outside the agility folder
  - cd into the dockerstuff folder and cp ./bin/karaf to $KARAF_HOME/bin/karaf
  - cd into the dockerstuff folder and cp ./bin/jvm-opts to $KARAF_HOME/bin/jvm-opts
@@ -30,34 +30,34 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 3. dockeron
   *to initialize docker*
 
-4. cd <dockerStuff folder>
+4. cd **dockerStuff folder**
 
-5. docker-compose -f <pick a docker-compose.yml you want to work with> up -d
+5. docker-compose -f **pick a docker-compose.yml you want to work with** up -d
 
   *FYI: You will want to stick with the same docker-compose.yml for the rest of the process. Otherwise, you'll end up recreating a container that uses a different program or version constantly.*
 
   *FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf).*
 
-6. docker-compose -f <docker-compose-####.yml> ps 
+6. docker-compose -f **docker-compose-####.yml** ps 
 
   *FYI: you should see something like this:*
   ```
           Name                       Command                      State                       Ports           
 -------------------------------------------------------------------------------------------------------------
-agility_phpmyadmin          /bin/sh -c phpmyadmin-      Up                          0.0.0.0:8181->80/tcp      
+agility_phpmyadmin          /bin/sh -c phpmyadmin-      Up                          0.0.0.0:8181-**80/tcp      
                             start                                                                             
-karaf                       /opt/agility-               Up                          0.0.0.0:5005->5005/tcp,   
-                            platform/bin/ ...                                       0.0.0.0:8022->8022/tcp,   
-                                                                                    0.0.0.0:8080->8080/tcp,   
-                                                                                    0.0.0.0:8443->8443/tcp    
-mysql                       /entrypoint.sh mysqld       Up                          0.0.0.0:3306->3306/tcp    
+karaf                       /opt/agility-               Up                          0.0.0.0:5005-**5005/tcp,   
+                            platform/bin/ ...                                       0.0.0.0:8022-**8022/tcp,   
+                                                                                    0.0.0.0:8080-**8080/tcp,   
+                                                                                    0.0.0.0:8443-**8443/tcp    
+mysql                       /entrypoint.sh mysqld       Up                          0.0.0.0:3306-**3306/tcp    
 rabbitmq                    /docker-entrypoint.sh       Up                          25672/tcp, 4369/tcp,      
                             rabb ...                                                5671/tcp,                 
-                                                                                    0.0.0.0:5672->5672/tcp    
-zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                          0.0.0.0:2181->2181/tcp
+                                                                                    0.0.0.0:5672-**5672/tcp    
+zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                          0.0.0.0:2181-**2181/tcp
   ```
 
-7. docker-compose -f <docker-compose####.yml> stop agilitykaraf
+7. docker-compose -f **docker-compose####.yml** stop agilitykaraf
 
   *FYI: Techincally karaf will work. You can watch it via "docker-compose logs agilitykaraf", but our other services aren't initialized yet.*
 
@@ -69,20 +69,20 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
   *FYI: This will set up the databases in your new mysql docker container*
 
-10. cd <dockerStuff folder>
+10. cd **dockerStuff folder**
 
-11. docker-compose -f <docker-compose####.yml> restart agilitykaraf
+11. docker-compose -f **docker-compose####.yml** restart agilitykaraf
 
 12. Feel free to watch it with "docker-compose logs agilitykaraf" until it completes loading
 
 13. docker-machine ip default
 
 14. "sudo vi /etc/hosts" and add this at the of the file
-<docker-machien ip default> docker
+**docker-machien ip default** docker
 
 15. Test the connectivity to your services
   ```
-  open up your favorite browser and run this http://docker:8080 (or http://<docker-machine ip default>:8080)
+  open up your favorite browser and run this http://docker:8080 (or http://**docker-machine ip default**:8080)
   or
   curl -L -k http://docker:8080
   ```
@@ -97,7 +97,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
   ```
 
 16. Test the debugger in your Eclipse. Few reminders:
-  - Update the host's value to "docker" (or <docker-machine ip default>)
+  - Update the host's value to "docker" (or **docker-machine ip default**)
   - "JUNIT_NAMESPACE=qa" need to be set in your ~/.bash_profile
 
 You should be set to go!
@@ -107,7 +107,7 @@ You should be set to go!
 * git pull whatever
 * $KARAF_HOME/.. and ant clean deploy
 *FYI: It will compile everything and put all the jars into $KARAF_HOME/deploy*
-* cd <path to dockerStuff> && docker-compose restart agilitykaraf
+* cd **path to dockerStuff** && docker-compose restart agilitykaraf
 FYI: It will restart agility (karaf)
 * Play away with agility, eclipse, or whatever
 
@@ -115,5 +115,5 @@ FYI: It will restart agility (karaf)
 
 1. I am sick of specifying which file (-f) in docker-compose.yml. So I created a symlink. 
 ln -s docker-compose-oraclejava8.yml docker-compose.yml. 
-Ahh, "docker-compose ps" => so much better :)
+Ahh, "docker-compose ps" =** so much better :)
 
