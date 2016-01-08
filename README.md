@@ -30,34 +30,34 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 3. dockeron
   *to initialize docker*
 
-4. cd **dockerStuff folder**
+4. cd **(dockerStuff folder)**
 
-5. docker-compose -f **pick a docker-compose.yml you want to work with** up -d
+5. docker-compose -f **(pick a docker-compose.yml you want to work with)** up -d
 
   *FYI: You will want to stick with the same docker-compose.yml for the rest of the process. Otherwise, you'll end up recreating a container that uses a different program or version constantly.*
 
   *FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf).*
 
-6. docker-compose -f **docker-compose-####.yml** ps 
+6. docker-compose -f **(docker-compose-####.yml)** ps 
 
   *FYI: you should see something like this:*
   ```
           Name                       Command                      State                       Ports           
 -------------------------------------------------------------------------------------------------------------
-agility_phpmyadmin          /bin/sh -c phpmyadmin-      Up                          0.0.0.0:8181-**80/tcp      
+agility_phpmyadmin          /bin/sh -c phpmyadmin-      Up                          0.0.0.0:8181->80/tcp      
                             start                                                                             
-karaf                       /opt/agility-               Up                          0.0.0.0:5005-**5005/tcp,   
+karaf                       /opt/agility-               Up                          0.0.0.0:5005->5005/tcp,   
                             platform/bin/ ...                                       0.0.0.0:8022-**8022/tcp,   
-                                                                                    0.0.0.0:8080-**8080/tcp,   
-                                                                                    0.0.0.0:8443-**8443/tcp    
-mysql                       /entrypoint.sh mysqld       Up                          0.0.0.0:3306-**3306/tcp    
+                                                                                    0.0.0.0:8080->8080/tcp,   
+                                                                                    0.0.0.0:8443->8443/tcp    
+mysql                       /entrypoint.sh mysqld       Up                          0.0.0.0:3306->3306/tcp    
 rabbitmq                    /docker-entrypoint.sh       Up                          25672/tcp, 4369/tcp,      
                             rabb ...                                                5671/tcp,                 
-                                                                                    0.0.0.0:5672-**5672/tcp    
+                                                                                    0.0.0.0:5672->5672/tcp    
 zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                          0.0.0.0:2181-**2181/tcp
   ```
 
-7. docker-compose -f **docker-compose####.yml** stop agilitykaraf
+7. docker-compose -f **(docker-compose####.yml)** stop agilitykaraf
 
   *FYI: Techincally karaf will work. You can watch it via "docker-compose logs agilitykaraf", but our other services aren't initialized yet.*
 
@@ -69,7 +69,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
   *FYI: This will set up the databases in your new mysql docker container*
 
-10. cd **dockerStuff folder**
+10. cd **(dockerStuff folder)**
 
 11. docker-compose -f **docker-compose####.yml** restart agilitykaraf
 
