@@ -119,7 +119,7 @@ You should be set to go!
 FYI: It will restart agility (karaf)
 * Play away with agility, eclipse, or whatever
 
-# Common Docker Commands
+# Common Docker Commands  
 
 1. docker-machine ip default (or whatever you called it)
   ```*See Docker's Ip Address*```
