@@ -109,7 +109,11 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
 You should be set to go!
 
-## Routine Work Procedure: 
+## Routine Work Procedure:
+
+hello
+  new line???
+    c'mon seriously!
 
 * Start a new terminal and type "docker" to initialize the docker environment and its variables
 * git pull agility (to get the latest)
