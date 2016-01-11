@@ -121,13 +121,6 @@ FYI: It will restart agility (karaf)
 
 # Common Docker Commands  
 
-1. docker-machine ip default (or whatever you called it)
-  ```*See Docker's Ip Address*```
-  why is not on a new line? 
-
-2. docker-machine restart default (or whatever you called it)
-  *Restart Docker-Machine. Useful if a container completely froze and cannot CTRL+C)*
-
 3. docker-compose ps
   *List all docker containers run by docker-compose*
 4. docker ps -a
