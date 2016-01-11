@@ -160,6 +160,12 @@ You should be set to go!
 
 # Tricks and Tips:
 
+* To go back to the original development environment where mysql, karaf, and others are installed on your local drive, type this
+
+  unset Docker_Host
+
+  *FYI: the ant script checks for $Docker_Host. If it exists, then it'll proceed to setting up everything on the docker-machine's default's containers. Otherwise, it'll proceed to setting up everything on your local machine*
+
 * Docker Cheatsheet - https://github.com/wsargent/docker-cheat-sheet
 
 * I am sick of specifying which file (-f) in docker-compose.yml. So I created a symlink. 
