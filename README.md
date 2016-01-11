@@ -122,9 +122,9 @@ FYI: It will restart agility (karaf)
 # Common Docker Commands
 
 - docker-machine ip default (or whatever you called it)
-  *See Docker's Ip Address*
-  why is it not a new breakline
-
+  ```*See Docker's Ip Address*```
+  why is not on a new line? 
+  
 - docker-machine restart default (or whatever you called it)
   *Restart Docker-Machine. Useful if a container completely froze and cannot CTRL+C)*
 
