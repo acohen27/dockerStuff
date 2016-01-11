@@ -152,7 +152,7 @@ You should be set to go!
 
   *Logging into the container and do whatever you want. (It's like ssh or telnet)*
 
-  *THe container must be up and running for you to log into. Check ps to make sure it's up and running instead of "exit(1)"*
+  *The container must be up and running for you to log into. Check ps to make sure it's up and running instead of "exit(1)"*
 
 - docker run -it --rm (imageid or image name) /bin/bash
 
