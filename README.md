@@ -11,10 +11,11 @@
 # Instructions
 
 1. Download docker engine from https://docs.docker.com/
+
   *testing here*
 
-2. open up your bash profile (vi ~/.bash_profile) and add this:
-alias dockeron='docker-machine start default; eval "$(docker-machine env default)"'
+2. open up your bash profile (vi ~/.bash_profile) and add this: 
+  alias dockeron='docker-machine start default; eval "$(docker-machine env default)"'
 
   *FYI : You will need to run this command every time you open a terminal and want to access the docker containers.*
 
@@ -122,6 +123,7 @@ hello
   new line???
     c'mon seriously!
 
+* (You may need to do this - git remote set-url origin git@github.com:ServiceMesh/agility.git)
 * Start a new terminal and type "docker" to initialize the docker environment and its variables
 * git pull agility (to get the latest)
 * cd $KARAF_HOME/.. and ant clean deploy
