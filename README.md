@@ -109,6 +109,11 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
 You should be set to go!
 
+
+hello
+  new line???
+    c'mon seriously!
+
 ## Routine Work Procedure:
 
 hello
