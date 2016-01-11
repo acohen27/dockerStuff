@@ -84,10 +84,9 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
   192.168.99.100
   ```
 
-15. Run "sudo vi /etc/hosts" on your terminal and add the ip address and an alias at the of the file. i.e.
+15. Run "sudo vi /etc/hosts" on your terminal and add the ip address and an alias at the of the file. i.e. <docker-machine ip default> docker
   ```
   192.168.99.100 docker
-  <docker-machine ip default> docker
   ```
 
 16. Test the connectivity to your services
