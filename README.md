@@ -11,6 +11,8 @@
 # Instructions
 
 1. Download docker engine from https://docs.docker.com/
+  testing here
+  
 2. open up your bash profile (vi ~/.bash_profile) and add this:
 alias dockeron='docker-machine start default; eval "$(docker-machine env default)"'
 
