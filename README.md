@@ -30,15 +30,15 @@ alias dockeron='docker-machine start default; eval "$(docker-machine env default
 3. dockeron
   *to initialize docker*
 
-4. cd **(dockerStuff folder)**
+4. cd ```<dockerStuff folder>```
 
-5. docker-compose -f **(pick a docker-compose.yml you want to work with)** up -d
+5. docker-compose -f ```<pick a docker-compose.yml you want to work with>``` up -d
 
   *FYI: You will want to stick with the same docker-compose.yml for the rest of the process. Otherwise, you'll end up recreating a container that uses a different program or version constantly.*
 
   *FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf).*
 
-6. docker-compose -f **(docker-compose-####.yml)** ps 
+6. docker-compose -f ```<docker-compose-####.yml>``` ps 
 
   *FYI: you should see something like this:*
   ```
@@ -57,7 +57,7 @@ rabbitmq                    /docker-entrypoint.sh       Up                      
 zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                          0.0.0.0:2181-**2181/tcp
   ```
 
-7. docker-compose -f **(docker-compose####.yml)** stop agilitykaraf
+7. docker-compose -f ```<docker-compose####.yml>``` stop agilitykaraf
 
   *FYI: Techincally karaf will work. You can watch it via "docker-compose logs agilitykaraf", but our other services aren't initialized yet.*
 
@@ -69,27 +69,25 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
   *FYI: This will set up the databases in your new mysql docker container*
 
-10. cd **(dockerStuff folder)**
+10. cd ```<dockerStuff folder>```
 
 11. docker-compose -f **docker-compose####.yml** up -d agilitykaraf
   *FYI: This will recreate the karaf container and restart the karaf again*
 
 12. Feel free to watch it with "docker-compose logs agilitykaraf" until it completes loading
 
-13. docker-machine ip default
-
-14. type "docker-machine ip default and copy its ip address. i.e.
+13. type "docker-machine ip default and copy its ip address. i.e.
   ```
   Andrew-MBP:dockerStuff acohen27$ docker-machine ip default
   192.168.99.100
   ```
 
-15. Run "sudo vi /etc/hosts" on your terminal and add the ip address and an alias at the of the file. i.e. ```<docker-machine ip default>``` docker
+14. Run "sudo vi /etc/hosts" on your terminal and add the docker-machine's ip address and an alias at the of the file. i.e.
   ```
   192.168.99.100 docker
   ```
 
-16. Test the connectivity to your services
+15. Test the connectivity to your services
   ```
   open up your favorite browser and run this http://docker:8080 (or http://**docker-machine ip default**:8080)
   or
@@ -105,9 +103,9 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
   Username: admin Password: x0cloud
   ```
 
-17. Test the debugger in your Eclipse. Few reminders:
+16. Test the debugger in your Eclipse. Few reminders:
   - Update the host's value to "docker" (or **docker-machine ip default**)
-  - "JUNIT_NAMESPACE=qa" need to be set in your ~/.bash_profile
+  - "JUNIT_NAMESPACE=qa" need to be set in your ~/.bash_profile for it to work properly
 
 You should be set to go!
 
@@ -117,7 +115,7 @@ You should be set to go!
 * git pull agility (to get the latest)
 * cd $KARAF_HOME/.. and ant clean deploy
 *FYI: It will compile everything and put all the jars into $KARAF_HOME/deploy*
-* cd **(path to dockerStuff)** && docker-compose restart agilitykaraf
+* cd ```<path to dockerStuff>``` && docker-compose restart agilitykaraf
 FYI: It will restart agility (karaf)
 * Play away with agility, eclipse, or whatever
 
