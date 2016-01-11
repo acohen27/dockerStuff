@@ -78,10 +78,19 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
 13. docker-machine ip default
 
-14. "sudo vi /etc/hosts" and add this at the of the file
-**docker-machien ip default** docker
+14. type "docker-machine ip default and copy its ip address. i.e.
+  ```
+  Andrew-MBP:dockerStuff acohen27$ docker-machine ip default
+  192.168.99.100
+  ```
 
-15. Test the connectivity to your services
+15. Run "sudo vi /etc/hosts" on your terminal and add the ip address and an alias at the of the file. i.e.
+  ```
+  192.168.99.100 docker
+  <docker-machine ip default> docker
+  ```
+
+16. Test the connectivity to your services
   ```
   open up your favorite browser and run this http://docker:8080 (or http://**docker-machine ip default**:8080)
   or
@@ -97,7 +106,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
   Username: admin Password: x0cloud
   ```
 
-16. Test the debugger in your Eclipse. Few reminders:
+17. Test the debugger in your Eclipse. Few reminders:
   - Update the host's value to "docker" (or **docker-machine ip default**)
   - "JUNIT_NAMESPACE=qa" need to be set in your ~/.bash_profile
 
