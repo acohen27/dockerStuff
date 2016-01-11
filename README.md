@@ -113,7 +113,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
 
 You should be set to go!
 
-## Routine Work Procedure:
+# Routine Work Procedure:
 
 * (You may need to do this - git remote set-url origin git@github.com:ServiceMesh/agility.git)
 * Start a new terminal and type "docker" to initialize the docker environment and its variables
@@ -130,7 +130,7 @@ You should be set to go!
 
 - docker-machine ip default (or whatever you called it) how to make a new linebreak?
 
-  ```*See Docker's Ip Address*```
+  *See Docker's Ip Address*
 
 - docker-machine restart default (or whatever you called it)
 
@@ -151,6 +151,7 @@ You should be set to go!
 - docker exec -it (containerid or container name) /bin/bash
 
   *Logging into the container and do whatever you want. (It's like ssh or telnet)*
+
   *THe container must be up and running for you to log into. Check ps to make sure it's up and running instead of "exit(1)"*
 
 - docker run -it --rm (imageid or image name) /bin/bash
