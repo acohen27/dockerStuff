@@ -41,6 +41,8 @@
 
   *FYI: docker-compose (an automation tool) will read the docker-compose.yml. The file instructs docker to pull and build a docker imagee for mysql, rabbitmq, zookeeper, and agility (karaf).*
 
+  *FYI -d means it will be run as a daemon in the background*
+
 6. docker-compose -f ```<docker-compose-####.yml>``` ps 
 
   *FYI: you should see something like this:*
@@ -169,6 +171,42 @@ You should be set to go!
 * Docker Cheatsheet - https://github.com/wsargent/docker-cheat-sheet
 
 * I am sick of specifying which file (-f) in docker-compose.yml. So I created a symlink. 
-ln -s docker-compose-oraclejava8.yml docker-compose.yml. 
+
+*ln -s docker-compose-oraclejava8.yml docker-compose.yml.*
+
 Ahh, "docker-compose ps" =** so much better :)
+
+* Docker inspect <imageid> or <containerid>
+
+Very useful for looking into the configurations, environments, and others. 
+
+* Container not starting up? overwrite the entry point and just run it from bash
+
+```
+$ docker run -it --rm --entrypoint=bash <imageid or imagename>
+root@896757f0bfd4:/# ls
+bin   dev       etc   lib  media  opt   root  sbin  sys  usr
+boot  docker-entrypoint.sh  home  lib64  mnt  proc  run   srv   tmp  var
+root@896757f0bfd4:/#
+```
+* Run a docker container in the background
+
+Add a "-d" in your docker command. 
+
+* Delete all existing containers
+
+docker rm $(docker ps -a -q)
+
+* Delete all existing images
+
+docker rmi $(docker images -q -a)
+
+* Change the docker driver to something else. VirtualBox can be a bit slow.
+
+docker-machine create --driver=vmwarefusion --vmwarefusion-memory-size 8192 --vmwarefusion-cpu-count 2 <name>
+
+*Then you need to update your docker env to point to the new driver instead of the ol' default*
+
+*All supported drivers can be seen here https://docs.docker.com/machine/drivers/*
+
 
