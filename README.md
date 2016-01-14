@@ -104,6 +104,7 @@ zookeeper                   /opt/zookeeper-3.4.2/bin/   Up                      
   Password: karaf
   enter "logout" to exit
   ```
+    *FYI: If you do get an error about ssh, then a solution can be 'rm ~/.ssh/known_hosts'*
   ```
   - open up your favorite browser and run this http://docker:8181 to see your databases.
   Username: admin Password: x0cloud
